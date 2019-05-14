@@ -1,0 +1,89 @@
+@import 'variables';
+@import 'mixins';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.albums{
+    font-family: 'Courier New', Courier, monospace;
+    background: lighten($principal-color,20%);
+    &__container{
+        display: flex;
+        flex-direction: column;
+        &--album{
+            background: $principal-color;
+            display: flex;
+            list-style: none;
+            align-items: center;
+            width: 600px;
+            height: 130px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 5px solid $fourth-color;
+            position: relative;
+            counter-increment: count;
+            &::before{
+                content: counter(count);
+                background: #ddd;
+                border: 5px solid $fourth-color;
+                width: 50px;
+                height: 50px;
+                font-weight: bold;
+                font-size: 25px;
+                border-radius: 100%;
+                position: absolute;
+                top: -20px;
+                right: -25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                color: #000;
+            }
+            &--image{
+                width: 100%;
+                max-width: 130px;
+                margin: 10px;
+                margin-left: 0;
+                border-bottom-right-radius: 50px;
+                border-right: 5px solid $fourth-color;
+                pointer-events: none;
+            }
+            
+            .albums__attributes{
+                list-style: none;
+                color: #000;
+                margin-left: 20px;
+                position: relative;
+                width: 400px;
+                
+                
+                &--artist{
+                    color: $secundary-color;
+                }
+                &--title{
+                    color: $third-color;
+                }
+                
+                &--category{
+                    color: $third-color;
+                }
+                &--albumLink{
+                    text-decoration: none;
+                    color: $fourth-color;
+                    font-weight: 700;
+                    &:hover{
+                        color: lighten($fourth-color, 50%);
+                    }
+                    &:visited{
+                       color: none;
+                    }
+                    &:focus{
+                        color: none;
+                    }
+                }
+            }
+        }
+    }
+}
