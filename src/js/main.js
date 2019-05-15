@@ -18,12 +18,12 @@ fetch(url)
         albumContainer.append(mainUl);
         
         [...response].forEach(el => {
-            let title = createNode('p');
-            let category = createNode('p');
-            let artist = createNode('h2');
-            let albumImage = createNode('img');
+            const title = createNode('p');
+            const category = createNode('p');
+            const artist = createNode('h2');
+            const albumImage = createNode('img');
             albumImage.setAttribute('src',el['im:image'][2].label);
-            let albumLink = createNode('a');
+            const albumLink = createNode('a');
             const ulItems = createNode('div');
             ulItems.setAttribute('class','albums__attributes')
             
@@ -32,13 +32,13 @@ fetch(url)
             artist.setAttribute('class','albums__attributes--artist');
             albumImage.setAttribute('class','albums__container--album--image');
             albumLink.setAttribute('class','albums__attributes--albumLink');
-
             albumLink.setAttribute('href',el.link.attributes.href);
             albumLink.setAttribute('target','_blank');
+            
             albumLink.textContent = 'Listen me!';
             artist.textContent = el['im:artist'].label;
             category.textContent = 'Category: ' + el.category.attributes.label;
-            title.textContent = el.title.label;
+            title.textContent = el['im:name'].label;
 
             let liElement = createNode('li');
             liElement.setAttribute('class','albums__container--album')

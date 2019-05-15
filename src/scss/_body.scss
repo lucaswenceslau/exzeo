@@ -5,13 +5,15 @@
     margin: 0;
     padding: 0;
 }
-.albums{
+.albums {
     font-family: 'Courier New', Courier, monospace;
     background: lighten($principal-color,20%);
-    &__container{
+    &__container {
         display: flex;
-        flex-direction: column;
-        &--album{
+        flex-flow: row wrap;
+        align-items: center;
+
+        &--album {
             background: $principal-color;
             display: flex;
             list-style: none;
@@ -23,9 +25,9 @@
             border: 5px solid $fourth-color;
             position: relative;
             counter-increment: count;
-            &::before{
+            &::before {
                 content: counter(count);
-                background: #ddd;
+                background: $principal-color;
                 border: 5px solid $fourth-color;
                 width: 50px;
                 height: 50px;
@@ -40,8 +42,17 @@
                 justify-content: center;
                 overflow: hidden;
                 color: #000;
+                transition: .3s ease-in-out;
+                cursor: pointer;
             }
-            &--image{
+            &:hover{
+                &::before{
+                    content: '>';
+                    transform: rotate(90deg);
+                    background: $secundary-color;
+                }
+            }
+            &--image {
                 width: 100%;
                 max-width: 130px;
                 margin: 10px;
@@ -51,7 +62,7 @@
                 pointer-events: none;
             }
             
-            .albums__attributes{
+            .albums__attributes {
                 list-style: none;
                 color: #000;
                 margin-left: 20px;
@@ -59,27 +70,29 @@
                 width: 400px;
                 
                 
-                &--artist{
+                &--artist {
                     color: $secundary-color;
+                    margin-bottom: 10px;
                 }
-                &--title{
+                &--title {
                     color: $third-color;
                 }
                 
-                &--category{
+                &--category {
                     color: $third-color;
                 }
-                &--albumLink{
+                &--albumLink {
                     text-decoration: none;
                     color: $fourth-color;
                     font-weight: 700;
-                    &:hover{
+                    margin-top: 100px;
+                    &:hover {
                         color: lighten($fourth-color, 50%);
                     }
-                    &:visited{
+                    &:visited {
                        color: none;
                     }
-                    &:focus{
+                    &:focus {
                         color: none;
                     }
                 }
